@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exteriors – Mariela Ganova Design</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #ccc;
+      font-family: 'Abel', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: none;
+      position: relative;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img {
+      width: 65%;
+      height: auto;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-toggle {
+      width: 25px;
+      height: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 2px;
+      background-color: #fff;
+      width: 100%;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid #333;
+      padding: 1rem;
+      z-index: 999;
+    }
+
+    .menu a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #fff;
+    }
+
+    /* --- Курсор с логото --- */
+    .cursor-logo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      pointer-events: none;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 2000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s linear;
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 0 12px rgba(255,255,255,0.08);
+    }
+
+    .cursor-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    /* --- Мобилна версия --- */
+    @media (max-width: 900px) {
+      body {
+        cursor: default;
+      }
+
+      .cursor-logo {
+        display: none;
+      }
+
+      .menu {
+        right: 1rem;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+
+  <div class="right">
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <a href="index.html">0.1 HOMEPAGE</a>
+  <a href="about.html">0.2 ABOUT</a>
+  <a href="interiors.html">0.3 INTERIORS</a>
+  <a href="exteriors.html">0.4 EXTERIORS</a>
+  <a href="mara-studio.html">0.5 MARA studio</a>
+  <a href="price.html">0.6 PRICE</a>
+  <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+  <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+  <a href="contact.html">0.9 CONTACT</a>
+</div>
+
+<!-- Курсор -->
+<div class="cursor-logo">
+  <img src="logo.png" alt="Cursor Logo">
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+// --- Курсор движение ---
+const cursor = document.querySelector('.cursor-logo');
+
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+});
+</script>
+
+</body>
+</html>

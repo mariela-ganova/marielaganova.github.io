@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About | Mariela Ganova</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+<style>
+/* --- Общ стил --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'Abel', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none; /* Скриваме стандартния курсор */
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  width: 70%;
+  display: block;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* MENU */
+.menu-toggle {
+  width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid #333;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.menu a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* --- Основен контент --- */
+.content {
+  display: flex;
+  padding: 120px 5% 60px;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo img {
+  width: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.photo img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1) blur(0.5px);
+}
+
+.text-section {
+  flex: 1;
+  font-size: 0.9rem;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-section > div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text-section h2 {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.text-section p {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.8;
+  color: #bbb;
+}
+
+.text-section hr {
+  border: none;
+  border-top: 1px solid #333;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.8rem;
+  padding: 1rem;
+  margin-top: 60px;
+}
+
+/* --- Мобилна версия --- */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    padding: 120px 2% 60px;
+  }
+
+  .photo img {
+    max-height: 50vh;
+    width: 90%;
+  }
+
+  .text-section {
+    text-align: center;
+  }
+}
+
+/* --- Курсор с логото --- */
+.cursor-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+  backdrop-filter: blur(5px);
+  background: rgba(255,255,255,0.05);
+}
+
+.cursor-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="menu" id="menu">
+    <a href="index.html">0.1 HOMEPAGE</a>
+    <a href="about.html">0.2 ABOUT</a>
+    <a href="interiors.html">0.3 INTERIORS</a>
+    <a href="exteriors.html">0.4 EXTERIORS</a>
+    <a href="mara-studio.html">0.5 MARA studio</a>
+    <a href="price.html">0.6 PRICE</a>
+    <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+    <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+    <a href="contact.html">0.9 CONTACT</a>
+  </div>
+</header>
+
+<div class="content">
+  <div class="photo">
+    <img src="profile.jpg" alt="Mariela Ganova Portrait">
+  </div>
+  <div class="text-section">
+    <div>
+      <h2>PHILOSOPHY</h2>
+      <p>MARIELA GANOVA IS THE FOUNDER AND THE OWNER OF THE STUDIO AND SERVES AS ITS DIRECTOR AND CHIEF DESIGNER...</p>
+      <hr>
+      <h2>OUR WORKS</h2>
+      <p>OUR STUDIO SPECIALIZES IN DESIGNING RESIDENTIAL, LUXURY APARTMENTS...</p>
+      <hr>
+      <h2>OUR VALUES</h2>
+      <p>OUR WORK LIVES AT THE INTERSECTION OF DESIGN AND CONTEMPORARY ART...</p>
+      <hr>
+      <h2>OUR MISSION</h2>
+      <p>IT IS A PRIVILEGE TO DESIGN AND PLAN THE SPACE IN WHICH WE LIVE...</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 Mariela Ganova. All rights reserved
+</footer>
+
+<!-- Курсор с логото -->
+<div class="cursor-logo">
+  <img src="logo.png" alt="Cursor Logo">
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+/* Курсор следва мишката */
+const cursor = document.querySelector('.cursor-logo');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+});
+</script>
+
+</body>
+</html>

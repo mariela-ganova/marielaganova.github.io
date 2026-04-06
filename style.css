@@ -1,0 +1,36 @@
+body {
+  cursor: none;
+}
+
+/* CURSOR ONLY */
+.custom-cursor {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor img {
+  width: 60%;
+  opacity: 0.9;
+}
+
+@media (max-width: 900px) {
+  body {
+    cursor: default;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+}

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Management</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #ccc;
+      font-family: 'Abel', sans-serif;
+      cursor: none;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      background-color: #000;
+      z-index: 1000;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      width: 25px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 2px;
+      background-color: #fff;
+      width: 100%;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 2rem;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid #333;
+      padding: 1rem;
+      z-index: 999;
+    }
+
+    .menu a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #fff;
+    }
+
+    .content {
+      padding-top: 120px;
+      padding-left: 4rem;
+      max-width: 900px;
+    }
+
+    .title {
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .section {
+      display: flex;
+      border-top: 1px solid #555;
+      padding: 1.5rem 0;
+    }
+
+    .section:last-child {
+      border-bottom: 1px solid #555;
+    }
+
+    .number {
+      width: 60px;
+      font-size: 1rem;
+      color: #aaa;
+      margin-right: 2rem;
+    }
+
+    .text {
+      font-size: 1rem;
+      line-height: 1.8;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    /* --- Курсор --- */
+    .cursor-logo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      pointer-events: none;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 2000;
+      transform: translate(-50%, -50%);
+      
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 0 12px rgba(255,255,255,0.08);
+
+      transition: transform 0.12s ease-out;
+    }
+
+    .cursor-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 900px) {
+      body {
+        cursor: default;
+      }
+
+      .cursor-logo {
+        display: none;
+      }
+
+      .content {
+        padding: 120px 1.5rem;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+
+      .menu {
+        right: 1rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="menu" id="menu">
+    <a href="index.html">0.1 HOMEPAGE</a>
+    <a href="about.html">0.2 ABOUT</a>
+    <a href="interiors.html">0.3 INTERIORS</a>
+    <a href="exteriors.html">0.4 EXTERIORS</a>
+    <a href="mara-studio.html">0.5 MARA studio</a>
+    <a href="price.html">0.6 PRICE</a>
+    <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+    <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+    <a href="contact.html">0.9 CONTACT</a>
+  </div>
+</header>
+
+<div class="content">
+
+  <div class="title">PROCUREMENT / MANAGEMENT / SERVICE</div>
+
+  <div class="section">
+    <div class="number">01</div>
+    <div class="text">
+      We offer a wide range of services for the implementation of our projects. We provide detailed estimates for all stages, as well as alternatives and ways to optimize the budget.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="number">02</div>
+    <div class="text">
+      We prepare a work plan for the implementation of the project, which includes all parties involved.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="number">03</div>
+    <div class="text">
+      We select and approve materials, technologies, and products in accordance with the plan and budget.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="number">04</div>
+    <div class="text">
+      We maintain communication with contractors, suppliers, and the client. This ensures clarity in project progress.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="number">05</div>
+    <div class="text">
+      Technical control – we can provide a person to conduct daily technical supervision.
+    </div>
+  </div>
+
+</div>
+
+<!-- Cursor -->
+<div class="cursor-logo">
+  <img src="logo.png" alt="Cursor Logo">
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+// Smooth cursor
+const cursor = document.querySelector('.cursor-logo');
+
+let mouseX = 0;
+let mouseY = 0;
+let posX = 0;
+let posY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animate() {
+  posX += (mouseX - posX) * 0.15;
+  posY += (mouseY - posY) * 0.15;
+
+  cursor.style.transform = `translate(${posX}px, ${posY}px) translate(-50%, -50%)`;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>

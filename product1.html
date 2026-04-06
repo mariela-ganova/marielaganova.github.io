@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ON'EA – MARA Studio</title>
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  color: #ccc;
+  font-family: "Century Gothic", sans-serif;
+  cursor: none;
+}
+
+/* --- CURSOR --- */
+.cursor {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+  background: rgba(34,34,34,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+.cursor img {
+  width: 60%;
+  height: auto;
+}
+
+/* --- HEADER --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  width: 70%;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.menu-toggle {
+  width: 25px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid #333;
+  padding: 1rem;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+}
+
+.menu a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* --- LAYOUT --- */
+.product-wrapper {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 100px;
+  max-width: 1500px;
+  margin: 120px auto;
+  padding: 0 60px;
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.product-images img {
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  border-radius: 6px;
+}
+
+.product-images img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05) blur(0.5px);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 40px;
+}
+
+.product-title {
+  font-size: 1.8rem;
+  letter-spacing: 6px;
+}
+
+.product-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #bbb;
+  white-space: pre-line;
+}
+
+.product-specs {
+  font-size: 0.9rem;
+  line-height: 2;
+}
+
+.line {
+  border-bottom: 1px solid #333;
+  margin: 15px 0;
+  width: 100%;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 900px) {
+  body {
+    cursor: default;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .product-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
+    margin: 100px auto;
+  }
+
+  .product-info {
+    padding-left: 0;
+  }
+
+  .product-title {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+  }
+
+  .product-text {
+    font-size: 0.85rem;
+  }
+
+  .menu {
+    right: 1rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor">
+  <img src="logo.png" alt="Cursor Logo">
+</div>
+
+<header>
+<a href="index.html" class="logo">
+  <img src="logo.png" alt="Logo">
+</a>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="menu" id="menu">
+  <a href="index.html">0.1 HOMEPAGE</a>
+  <a href="about.html">0.2 ABOUT</a>
+  <a href="interiors.html">0.3 INTERIORS</a>
+  <a href="exteriors.html">0.4 EXTERIORS</a>
+  <a href="mara-studio.html">0.5 MARA studio</a>
+  <a href="price.html">0.6 PRICE</a>
+  <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+  <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+  <a href="contact.html">0.9 CONTACT</a>
+</div>
+</header>
+
+<div class="product-wrapper">
+  <div class="product-images">
+    <img src="mara-studio/sunlounger1.jpg" alt="On'ea Sun lounger">
+    <img src="mara-studio/sunlounger2.jpg" alt="On'ea Sun lounger">
+    <img src="mara-studio/sunlounger3.jpg" alt="On'ea Sun lounger">
+    <img src="mara-studio/sunlounger4.jpg" alt="On'ea Sun lounger">
+  </div>
+
+  <div class="product-info">
+    <div class="product-title">ON'EA</div>
+
+    <div class="product-specs">
+      <div>INFORMATION</div>
+      <div class="line"></div>
+      <div>PRICE ON REQUEST</div>
+      <div class="line"></div>
+      <div>Category: Sun lounger</div>
+      <div class="line"></div>
+      <div>Target: indoor/outdoor</div>
+      <div class="line"></div>
+      <div>Dimension: L.1900 x d. 770 x h. 840 mm</div>
+      <div class="line"></div>
+      <div>Color: Yellow / Black / Custom RAL</div>
+      <div class="line"></div>
+      <div>Material: Metal</div>
+      <div class="line"></div>
+      <div>Production: Made to order, 50 working days</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="product-text">
+there is no beginning
+there is no function
+there is no promise
+
+only
+permeability
+---
+the metal has forgotten
+that it is meant to be solid
+
+it has stretched
+into lines
+into absences
+into pauses within itself
+---
+this is not a surface
+this is
+a passage
+---
+you sit -
+and something is missing
+not support
+but resistance
+
+On’ea does not hold you
+it lets you go
+---
+air does not surround the form
+it cuts through it
+divides it
+repeats it in motion
+you are not on the object
+you are inside
+a flow
+without shape
+---
+On’ea does not mean
+or it means
+exactly what cannot be held
+
+a sound
+before it becomes a word
+
+space
+before it becomes a place
+---
+there is no center
+no mass
+only
+a network of possibilities
+that occur
+when the body stops weighing
+---
+this is not design
+
+this is a refusal
+of density
+of boundaries
+of possession
+---
+On’ea is the moment
+you realize
+that form does not exist
+except as
+passage
+---
+if you stay long enough
+you will disappear
+without moving
+!
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+/* CURSOR FOLLOW */
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", (e) => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+});
+</script>
+
+</body>
+</html>

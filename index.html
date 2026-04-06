@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mariela Ganova Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Abel', sans-serif;
+      overflow: hidden;
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.9);
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .logo {
+  width: 60px;              
+  height: 60px;
+  border-radius: 50%;
+  background-color: #444;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+    .logo img {
+  width: 65%;
+  height: auto;
+}
+
+    .icons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .language {
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: #ccc;
+    }
+
+    .menu-toggle {
+      width: 25px;
+      height: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      background-color: rgba(0, 0, 0, 0.9);
+      border: 1px solid #333;
+      padding: 1rem;
+      z-index: 999;
+    }
+
+    .menu a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .menu a:hover {
+      color: #fff;
+    }
+
+    .overlay {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      color: #ccc;
+      z-index: 1;
+    }
+
+    .middle {
+      height: calc(100vh - 100px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .center-text {
+      text-align: center;
+      animation: fadeIn 5s ease forwards;
+    }
+
+    .center-text h1 {
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .bottom {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  animation: fadeIn 5s ease forwards;
+  z-index: 2;
+}
+
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.social-icons a {
+  color: #ccc;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: white;
+}
+
+footer {
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+     .mdw-text {
+  color: #ccc;
+  font-size: 1.0rem; /* увеличаваме размера */
+  font-family: "Century Gothic", sans-serif; /* шрифт */
+  max-width: 700px;
+  margin: 1.5rem auto 2rem auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+ .dopir-invitation {
+  max-width: 380px;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.75; /* леко прозрачна */
+  border-radius: 4px;
+  animation: fadeIn 3s ease forwards;
+}
+    @media (max-width: 768px) {
+    .mdw-text {
+      font-size: 0.9rem;
+      max-width: 90%;
+      margin: 1rem auto 1.5rem auto;
+    }
+
+    .dopir-invitation {
+      max-width: 300px;
+    }
+  }
+</style>
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline>
+    <source src="background.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <header>
+   <a href="index.html" class="logo">
+  <img src="logo.png" alt="Logo">
+</a>
+    <div class="icons">
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+    <div class="menu" id="menu">
+      <a href="index.html">0.1 HOMEPAGE</a>
+      <a href="about.html">0.2 ABOUT</a>
+      <a href="interiors.html">0.3 INTERIORS</a>
+      <a href="exteriors.html">0.4 EXTERIORS</a>
+      <a href="mara-studio.html">0.5 MARA studio</a>
+      <a href="price.html">0.6 PRICE</a>
+      <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+      <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+      <a href="contact.html">0.9 CONTACT</a>
+    </div>
+  </header>
+
+  <div class="overlay">
+    <div class="middle">
+      <div class="middle">
+  <div class="center-text">
+  <h1>INTERIOR AND PRODUCT DESIGN STUDIO</h1>
+  <p class="mdw-text">
+    This year, MARA Studio will be part of a collaboration of artists, designers, and creators at the world furniture and design exhibition Milano Design Week 2026 and Fuorisalone, under the exhibition name DOPIR.
+  </p>
+  <img src="images/invitation-dopir.jpg" alt="DOPIR Invitation" class="dopir-invitation">
+</div>
+</div>
+    <div class="bottom">
+  <div class="social-icons">
+    <a href="https://instagram.com/marielaganova" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://pinterest.com/ganovamariela" target="_blank"><i class="fab fa-pinterest"></i></a>
+    <a href="https://behance.net/marielaganova" target="_blank"><i class="fab fa-behance"></i></a>
+  </div>
+  <footer>© 2025 Mariela Ganova. All rights reserved</footer>
+</div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+</script>
+</body>
+</html>

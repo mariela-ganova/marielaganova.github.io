@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Price – Mariela Ganova Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+<style>
+/* --- Общ стил --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'Abel', sans-serif;
+  overflow-y: auto;
+  cursor: none; /* Скриване на стандартния курсор */
+  position: relative;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 65%;
+  height: auto;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+  width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background-color: rgba(0,0,0,0.9);
+  border: 1px solid #333;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.menu a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* --- Основно съдържание --- */
+main {
+  padding: 120px 2rem 40px;
+  text-align: left;
+}
+
+details {
+  margin-bottom: 2.5rem;
+}
+
+summary {
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  list-style: none;
+  position: relative;
+  padding-left: 50px;
+}
+
+summary::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+details[open] summary::before {
+  content: "-";
+}
+
+.sub-summary {
+  font-size: 1rem;
+  color: #aaa;
+  margin: 2rem 0 0.5rem;
+}
+
+.sub-details {
+  margin-left: 3rem;
+  font-size: 1rem;
+  color: #aaa;
+  line-height: 2;
+}
+
+.spacer {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* --- Мобилна версия --- */
+@media (max-width: 900px) {
+  main {
+    padding: 100px 1rem 20px;
+  }
+  summary {
+    font-size: 1.2rem;
+    padding-left: 35px;
+  }
+  summary::before {
+    font-size: 1.5rem;
+  }
+  .sub-details {
+    margin-left: 2rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* --- Курсор с логото --- */
+.cursor-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2000;
+  transform: translate(-50%, -50%);
+  
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 12px rgba(255,255,255,0.08);
+
+  transition: transform 0.12s ease-out;
+}
+.cursor-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a href="index.html" class="logo"><img src="logo.png" alt="Logo"></a>
+  <div class="right">
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <a href="index.html">0.1 HOMEPAGE</a>
+  <a href="about.html">0.2 ABOUT</a>
+  <a href="interiors.html">0.3 INTERIORS</a>
+  <a href="exteriors.html">0.4 EXTERIORS</a>
+  <a href="mara-studio.html">0.5 MARA studio</a>
+  <a href="price.html">0.6 PRICE</a>
+  <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+  <a href="awards-press.html">0.8 AWARDS&PRESS</a>
+  <a href="contact.html">0.9 CONTACT</a>
+</div>
+
+<main>
+<details>
+  <summary>0.1. INTERIOR DESIGN</summary>
+  <div class="sub-details">
+    0.1.1. INTERIOR DESIGN PROJECT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 60 E / m2<span class="spacer"></span>
+    <div class="sub-details">
+      Site measurement<br>
+      Redevelopment plan<br>
+      Concept development<br>
+      Plan for dismantling and installing walls, ceilings, etc.<br>
+      Furnishing plan<br>
+      Flooring plan<br>
+      Wall plan and details<br>
+      Ceiling plan and details<br>
+      Door and window plan<br>
+      Soffit Electrical task<br>
+      Plumbing task Ventilation and air conditioning and heating task<br>
+      Audio and video sound task<br>
+      Lighting specifications<br>
+      Sanitary faience specifications<br>
+      Specifications of ready-made selected furniture<br>
+      Furniture drawings<br>
+      3D Vizualization - up to 2 corrections
+    </div>
+
+    <div class="sub-summary">
+      0.1.2. INTERIOR DESIGN PROJECT + DESIGN SUPERVISION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 80 E / m2<span class="spacer"></span>
+      <div class="sub-details">
+        Site measurement<br>
+        Redevelopment plan<br>
+        Concept development<br>
+        Plan for dismantling and installing walls, ceilings, etc.<br>
+        Furnishing plan<br>
+        Flooring plan<br>
+        Wall plan and details<br>
+        Ceiling plan and details<br>
+        Door and window plan<br>
+        Soffit Electrical task<br>
+        Plumbing task Ventilation and air conditioning and heating task<br>
+        Audio and video sound task<br>
+        Lighting specifications<br>
+        Sanitary faience specifications<br>
+        Specifications of ready-made selected furniture<br>
+        Furniture drawings<br>
+        3D Vizualization - up to 2 corrections<br><br>
+        Assistance in the selection of furniture, lamps, sanitary ware, doors, paints, colors, textiles<br>
+        Calculation of project specifications<br>
+        Consultation and communication with contractors for construction and renovation activities<br>
+        Consultation and communication with contractors for furniture under the project<br>
+        Organization of orders and deliveries of furniture, lamps, tiles, sanitary ware<br>
+        Coordination of the work process<br>
+        Control visits to the site when convenient for the designer and the client<br>
+      </div>
+    </div>
+</details>
+
+<details>
+  <summary>0.2. ARCHITECTURAL DESIGN</summary>
+  <div class="sub-summary">
+    0.2.1 ARCHITECTURAL DESIGN UP TO 500 m2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 60 E/m2<span class="spacer"></span>
+    <div class="sub-details">
+      Development of a general plan of the building<br>
+      Zoning of site<br>
+      Development of a facade solution for the building (up to 3 variants of planning and facade solutions)<br>
+      Zoning of a yard (without a definite landscape, performed by a landscape architect) (up to 2 edits)<br>
+      Ideas for a fence and a gate<br>
+      Specification of finishing materials<br>
+      Outdoor lighting conception<br>
+      Outdoor zone concept development<br>
+      3D visualization of facade
+    </div>
+
+    <div class="sub-summary">
+      0.2.2 ARCHITECTURAL DESIGN 500 - 1000 m2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 80 E/m2<span class="spacer"></span>
+      <div class="sub-details">
+        Development of a general plan of the building<br>
+        Zoning of site<br>
+        Development of a facade solution for the building (up to 3 variants of planning and facade solutions)<br>
+        Zoning of a yard (without a definite landscape, performed by a landscape architect) (up to 2 edits)<br>
+        Ideas for a fence and a gate<br>
+        Specification of finishing materials<br>
+        Outdoor lighting conception<br>
+        Outdoor zone concept development<br>
+        3D visualization of facade
+      </div>
+    </div>
+
+    <div class="sub-summary">
+      0.2.3 ARCHITECTURAL DESIGN MORE THAN 1000 m2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ON REQUEST<span class="spacer"></span>
+    </div>
+</details>
+
+<details>
+  <summary>0.3. INTERIOR & ARCHITECTURAL DESIGN</summary>
+  <div class="sub-summary">
+    0.3.1 INTERIOR DESIGN PROJECT & ARCHITECTURAL DESIGN CONCEPTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100 E / m2<span class="spacer"></span>
+    <div class="sub-details">
+      Site measurement<br>
+      Redevelopment plan<br>
+      Concept development<br>
+      Plan for dismantling and installing walls, ceilings, etc.<br>
+      Furnishing plan<br>
+      Flooring plan<br>
+      Wall plan and details<br>
+      Ceiling plan and details<br>
+      Door and window plan<br>
+      Soffit Electrical task<br>
+      Plumbing task Ventilation and air conditioning and heating task<br>
+      Audio and video sound task<br>
+      Lighting specifications<br>
+      Sanitary faience specifications<br>
+      Specifications of ready-made selected furniture<br>
+      Furniture drawings<br>
+      3D Vizualization - up to 2 corrections<br><br>
+      Development of a general plan of the building<br>
+      Zoning of site<br>
+      Development of a facade solution for the building (up to 3 variants of planning and facade solutions)<br>
+      Zoning of a yard (without a definite landscape, performed by a landscape architect) (up to 2 edits)<br>
+      Ideas for a fence and a gate<br>
+      Specification of finishing materials<br>
+      Outdoor lighting conception<br>
+      Outdoor zone concept development<br>
+      3D visualization of facade
+    </div>
+
+    <div class="sub-summary">
+      0.3.2 INTERIOR DESIGN PROJECT & ARCHITECTURAL DESIGN CONCEPTION + SUPERVISION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 130 E / m2<span class="spacer"></span>
+      <div class="sub-details">
+        Site measurement<br>
+        Redevelopment plan<br>
+        Concept development<br>
+        Plan for dismantling and installing walls, ceilings, etc.<br>
+        Furnishing plan<br>
+        Flooring plan<br>
+        Wall plan and details<br>
+        Ceiling plan and details<br>
+        Door and window plan<br>
+        Soffit Electrical task<br>
+        Plumbing task Ventilation and air conditioning and heating task<br>
+        Audio and video sound task<br>
+        Lighting specifications<br>
+        Sanitary faience specifications<br>
+        Specifications of ready-made selected furniture<br>
+        Furniture drawings<br>
+        3D Vizualization - up to 2 corrections<br><br>
+        Development of a general plan of the building<br>
+        Zoning of site<br>
+        Development of a facade solution for the building (up to 3 variants of planning and facade solutions)<br>
+        Zoning of a yard (without a definite landscape, performed by a landscape architect) (up to 2 edits)<br>
+        Ideas for a fence and a gate<br>
+        Specification of finishing materials<br>
+        Outdoor lighting conception<br>
+        Outdoor zone concept development<br>
+        3D visualization of facade<br><br>
+        Assistance in the selection of furniture, lamps, sanitary ware, doors, paints, colors, textiles<br>
+        Calculation of project specifications<br>
+        Consultation and communication with contractors for construction and renovation activities<br>
+        Consultation and communication with contractors for furniture under the project<br>
+        Organization of orders and deliveries of furniture, lamps, tiles, sanitary ware<br>
+        Coordination of the work process<br>
+        Control visits to the site when convenient for the designer and the client<br>
+      </div>
+    </div>
+</details>
+
+<details>
+  <summary>0.4. TECHNICAL CONTROL</summary>
+  <div class="sub-summary">
+    ON REQUEST<span class="spacer"></span>
+    The technical control service in execution of the works consists in planning and conducting checks<br>
+    during the construction of the work, in some or all of its sections, aimed at controlling the work<br>
+    process linked to the supply and implementation of materials, elements or sub systems, execution of<br>
+    work according to the project and quality of the project implementation<br><br>
+    Design Verification<br>
+    Construction Monitoring<br>
+    Material Assurance for construction/reconstruction process<br>
+    Quality Assurance<br>
+    Safety Compliance<br>
+    Coordination<br>
+    Testing and Commissioning
+  </div>
+</details>
+</main>
+
+<!-- Курсор с логото -->
+<div class="cursor-logo"><img src="logo.png" alt="Cursor Logo"></div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+// Лого курсор
+const cursor = document.querySelector('.cursor-logo');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+});
+</script>
+</body>
+</html>

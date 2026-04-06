@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interiors – Mariela Ganova Design</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+<style>
+/* --- Общ стил --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'Abel', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  width: 70%;
+  height: auto;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.menu-toggle {
+  width: 25px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid #333;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.menu a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* --- Portfolio --- */
+.portfolio h1 {
+  text-align: center;
+  color: #ccc;
+  margin-top: 100px;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.portfolio {
+  max-width: 1200px;
+  margin: 100px auto 50px; 
+  padding: 0 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.projects-grid a {
+  text-align: center;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.projects-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  border-radius: 6px;
+}
+
+.projects-grid a:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1) blur(0.5px);
+}
+
+.project-title,
+.project-location,
+.project-type {
+  font-family: "Century Gothic", sans-serif;
+  color: #ccc;
+  margin: 0.2rem 0;
+  text-align: right;
+}
+
+.project-title {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.project-location,
+.project-type {
+  font-size: 1rem;
+}
+
+/* --- Мобилна версия --- */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .portfolio {
+    margin: 120px 2% 50px;
+  }
+}
+
+/* --- Курсор с логото --- */
+.cursor-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+  backdrop-filter: blur(5px);
+  background: rgba(255,255,255,0.05);
+}
+
+.cursor-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <a href="index.html">0.1 HOMEPAGE</a>
+  <a href="about.html">0.2 ABOUT</a>
+  <a href="interiors.html">0.3 INTERIORS</a>
+  <a href="exteriors.html">0.4 EXTERIORS</a>
+  <a href="mara-studio.html">0.5 MARA studio</a>
+  <a href="price.html">0.6 PRICE</a>
+  <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+  <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+  <a href="contact.html">0.9 CONTACT</a>
+</div>
+
+<main class="portfolio">
+  <h1>PORTFOLIO OF INTERIOR PROJECTS</h1>
+  <div class="projects-grid">
+    <a href="project1.html">
+      <img src="projects/project1-thumb.jpg" alt="Glass House">
+      <p class="project-title">GLASS HOUSE</p>
+      <p class="project-location">Sofia, Bulgaria</p>
+      <p class="project-type">Private Residence</p>
+    </a>
+    <a href="project2.html">
+      <img src="projects/hotel-sentro-main.jpg" alt="Sentro Hotel">
+      <p class="project-title">SENTRO</p>
+      <p class="project-location">Sofia, Bulgaria</p>
+      <p class="project-type">Hotel</p>
+    </a>
+    <a href="project3.html">
+      <img src="projects/maisonette-main.jpg" alt="Maisonette">
+      <p class="project-title">MAISONETTE</p>
+      <p class="project-location">Sofia, Bulgaria</p>
+      <p class="project-type">Private apartment</p>
+    </a>
+  </div>
+</main>
+
+<!-- Курсор с логото -->
+<div class="cursor-logo">
+  <img src="logo.png" alt="Cursor Logo">
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+// --- Следване на мишката с логото ---
+const cursor = document.querySelector('.cursor-logo');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+});
+</script>
+
+</body>
+</html>

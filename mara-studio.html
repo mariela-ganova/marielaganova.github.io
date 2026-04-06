@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MARA Studio – Mariela Ganova</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+<style>
+/* --- Общ стил --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'Abel', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none; /* Скриваме стандартния курсор */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  width: 70%;
+  height: auto;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.menu-toggle {
+  width: 25px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid #333;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.menu a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* --- Studio intro --- */
+.studio-intro {
+  max-width: 800px;
+  margin: 120px auto 80px;
+  text-align: center;
+  line-height: 1.8;
+  padding: 0 20px;
+}
+
+.studio-intro h1 {
+  font-size: 2.4rem;
+  letter-spacing: 6px;
+  margin-bottom: 40px;
+}
+
+.studio-intro p {
+  font-size: 1.1rem;
+  color: #bbb;
+  line-height: 1.9;
+}
+
+/* --- Products grid --- */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto 120px;
+  padding: 0 40px;
+}
+
+.products-grid a.product {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  border-radius: 8px;
+}
+
+.product img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  border-radius: 8px;
+}
+
+.product::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  backdrop-filter: blur(3px);
+}
+
+.product:hover::after {
+  opacity: 1;
+}
+
+.product-name {
+  position: absolute;
+  bottom: 25px;
+  left: 30px;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-family: "Century Gothic", sans-serif;
+  font-weight: 300;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(5px);
+}
+
+.product:hover .product-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1) blur(0.5px);
+}
+
+/* --- Мобилна версия --- */
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 40px;
+  }
+  .studio-intro {
+    margin: 140px 20px 60px;
+  }
+}
+
+/* --- Курсор с логото --- */
+.cursor-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+  backdrop-filter: blur(5px);
+  background: rgba(255,255,255,0.05);
+}
+
+.cursor-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="menu" id="menu">
+    <a href="index.html">0.1 HOMEPAGE</a>
+    <a href="about.html">0.2 ABOUT</a>
+    <a href="interiors.html">0.3 INTERIORS</a>
+    <a href="exteriors.html">0.4 EXTERIORS</a>
+    <a href="mara-studio.html">0.5 MARA studio</a>
+    <a href="price.html">0.6 PRICE</a>
+    <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+    <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+    <a href="contact.html">0.9 CONTACT</a>
+  </div>
+</header>
+
+<section class="studio-intro">
+  <h1>MARA STUDIO</h1>
+  <p>
+    Founded in 2017, MARA studio navigates the tension between precision and intuition — a studio where objects emerge as quiet statements rather than declarations. The owner Mariela Ganova works across wood, metal, and leather, each piece exists as a singular presence, shaped by contrast: strict geometry against soft, almost organic deformation.
+    <br><br>
+    Furniture, lighting, and objects exist in the in-between — where defined form dissolves into fluid transition, and clarity gives way to ambiguity. The design is a tangible manifestation of a captured feeling.
+  </p>
+</section>
+
+<section class="products-grid">
+  <a href="product1.html" class="product">
+    <img src="mara-studio/sunlounger-main.jpg" alt="On'ea Sun lounger">
+    <div class="product-name">ON'EA</div>
+  </a>
+
+  <a href="product2.html" class="product">
+    <img src="mara-studio/anemona-main.jpg" alt="Anemona small table">
+    <div class="product-name">ANEMONA</div>
+  </a>
+
+  <a href="product3.html" class="product">
+    <img src="mara-studio/tre-main.jpg" alt="TRE">
+    <div class="product-name">TRE</div>
+  </a>
+
+  <a href="product4.html" class="product">
+    <img src="mara-studio/mara-main.jpg" alt="MARA II">
+    <div class="product-name">MARA II</div>
+  </a>
+
+  <a href="product5.html" class="product">
+    <img src="mara-studio/bowl1-main.jpg" alt="BOWL LAMP">
+    <div class="product-name">BOWL LAMP</div>
+  </a>
+
+  <a href="product6.html" class="product">
+    <img src="mara-studio/toby-main.jpg" alt="Mr. Toby">
+    <div class="product-name">Mr. Toby</div>
+  </a>
+</section>
+
+<!-- Курсор с логото -->
+<div class="cursor-logo">
+  <img src="logo.png" alt="Cursor Logo">
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+// --- Следване на мишката с логото ---
+const cursor = document.querySelector('.cursor-logo');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+});
+</script>
+
+</body>
+</html>

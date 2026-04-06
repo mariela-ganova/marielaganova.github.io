@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass House – Mariela Ganova Design</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'Abel', sans-serif;
+  min-height: 100vh;
+  overflow-y: auto;
+  cursor: none;
+}
+
+/* CURSOR */
+.cursor {
+  width: 28px;
+  height: 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 12px rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+.cursor img {
+  width: 65%;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 65%;
+}
+
+/* MENU */
+.menu-toggle {
+  width: 25px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid #333;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.menu a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* CONTENT */
+main {
+  padding-top: 120px;
+}
+
+.project-title {
+  font-family: "Century Gothic", sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0.2rem 0;
+  text-align: center;
+}
+
+.project-location,
+.project-type {
+  font-family: "Century Gothic", sans-serif;
+  font-size: 1rem;
+  margin: 0.1rem 0;
+  text-align: center;
+}
+
+/* IMAGES */
+.project-images img.small-img {
+  width: 90%;
+  max-width: 800px;
+  display: block;
+  margin: 20px auto;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.project-images img.small-img:hover {
+  transform: scale(1.04);
+  filter: brightness(1.1);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  body {
+    cursor: auto;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .project-images img.small-img {
+    width: 95%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor">
+  <img src="logo.png" alt="">
+</div>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="menu" id="menu">
+    <a href="index.html">0.1 HOMEPAGE</a>
+    <a href="about.html">0.2 ABOUT</a>
+    <a href="interiors.html">0.3 INTERIORS</a>
+    <a href="exteriors.html">0.4 EXTERIORS</a>
+    <a href="mara-studio.html">0.5 MARA studio</a>
+    <a href="price.html">0.6 PRICE</a>
+    <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+    <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+    <a href="contact.html">0.9 CONTACT</a>
+  </div>
+</header>
+
+<main>
+  <div class="project-title">GLASS HOUSE</div>
+  <div class="project-location">Sofia, Bulgaria</div>
+  <div class="project-type">Private Residence</div>
+
+  <div class="project-images">
+    <img src="projects/glass-house-1.jpg" class="small-img">
+    <img src="projects/glass-house-2.jpg" class="small-img">
+    <img src="projects/glass-house-3.jpg" class="small-img">
+    <img src="projects/glass-house-4.jpg" class="small-img">
+    <img src="projects/glass-house-5.jpg" class="small-img">
+    <img src="projects/glass-house-6.jpg" class="small-img">
+    <img src="projects/glass-house-7.png" class="small-img">
+    <img src="projects/glass-house-8.jpg" class="small-img">
+    <img src="projects/glass-house-main.jpg" class="small-img">
+  </div>
+</main>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+/* SMOOTH CURSOR */
+const cursor = document.getElementById("cursor");
+
+let mouseX = 0;
+let mouseY = 0;
+let posX = 0;
+let posY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateCursor() {
+  posX += (mouseX - posX) * 0.15;
+  posY += (mouseY - posY) * 0.15;
+
+  cursor.style.left = posX + "px";
+  cursor.style.top = posY + "px";
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+</script>
+
+</body>
+</html>

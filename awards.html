@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awards & Press – Mariela Ganova Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Abel', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      align-items: center;
+      z-index: 10;
+    }
+    .logo {
+      width: 40px;
+      height: 40px;
+      background-color: #444;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .icons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .menu-toggle {
+      width: 25px;
+      height: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      background-color: #ccc;
+      height: 2px;
+      width: 100%;
+      display: block;
+    }
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      background-color: #000;
+      border: 1px solid #333;
+      padding: 1rem;
+      z-index: 999;
+    }
+    .menu a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .menu a:hover {
+      color: #fff;
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      gap: 20rem;
+    }
+    .btn-link {
+      font-size: 1.875rem; 
+      color: #444; 
+      text-decoration: none;
+      border: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.25rem;
+    }
+    .btn-link:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><div class="logo"></div></a>
+    <div class="icons">
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+  <div class="menu" id="menu">
+    <a href="index.html">0.1 HOMEPAGE</a>
+    <a href="about.html">0.2 ABOUT</a>
+    <a href="interiors.html">0.3 INTERIORS</a>
+    <a href="exteriors.html">0.4 EXTERIORS</a>
+    <a href="mara-studio.html">0.5 MARA studio</a>
+    <a href="price.html">0.6 PRICE</a>
+    <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+    <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+    <a href="contact.html">0.9 CONTACT</a>
+  </div>
+  <div class="main-content">
+    <div class="container">
+      <a href="awards-events.html" class="btn-link">AWARDS</a>
+      <a href="press.html" class="btn-link">PRESS</a>
+    </div>
+  </div>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>

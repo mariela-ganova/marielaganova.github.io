@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mariela Ganova Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #ccc;
+  font-family: 'Abel', sans-serif;
+  cursor: none;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: #000;
+  z-index: 1000;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  width: 65%;
+  height: auto;
+  display: block;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.menu-toggle {
+  width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-toggle span {
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 2rem;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid #333;
+  padding: 1rem;
+  z-index: 1050;
+}
+
+.menu a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.center-text h1 {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: #ccc;
+}
+
+.social-icons {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: #ccc;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.contact-box {
+  position: absolute;
+  top: 20%;
+  right: 2rem;
+  color: #ccc;
+  text-align: right;
+  font-size: 1.1rem;
+  line-height: 2.4rem;
+}
+
+.contact-box h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.divider {
+  border-bottom: 1px solid #666;
+  margin: 0.5rem 0 1rem;
+}
+
+/* --- Курсор с логото --- */
+.cursor-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2000;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 12px rgba(255,255,255,0.08);
+  transition: transform 0.12s ease-out;
+}
+
+.cursor-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* --- Mobile --- */
+@media (max-width: 900px) {
+  body {
+    cursor: default;
+  }
+
+  .cursor-logo {
+    display: none;
+  }
+
+  .menu {
+    right: 1rem;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contact-box {
+    right: 1rem;
+    top: 25%;
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <a href="index.html">0.1 HOMEPAGE</a>
+  <a href="about.html">0.2 ABOUT</a>
+  <a href="interiors.html">0.3 INTERIORS</a>
+  <a href="exteriors.html">0.4 EXTERIORS</a>
+  <a href="mara-studio.html">0.5 MARA studio</a>
+  <a href="price.html">0.6 PRICE</a>
+  <a href="management.html">0.7 MANAGEMENT & SUPPORT</a>
+  <a href="awards-press.html">0.8 AWARDS & PRESS</a>
+  <a href="contact.html">0.9 CONTACT</a>
+</div>
+
+<div class="contact-box">
+  <h2>GENERAL CONTACTS:</h2>
+  <div class="divider"></div>
+  <div><strong>E:</strong><br>m.ganova@mail.bg<br>mariela.ganova@gmail.com</div>
+  <div class="divider"></div>
+  <div><strong>T:</strong><br>+359897808730 (EU) (BG)</div>
+</div>
+
+<!-- Cursor Logo -->
+<div class="cursor-logo">
+  <img src="logo.png" alt="Cursor Logo">
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const toggle = document.querySelector('.menu-toggle');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  toggle.classList.toggle('active');
+}
+
+// Smooth cursor
+const cursor = document.querySelector('.cursor-logo');
+let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animate() {
+  posX += (mouseX - posX) * 0.15;
+  posY += (mouseY - posY) * 0.15;
+  cursor.style.transform = `translate(${posX}px, ${posY}px) translate(-50%, -50%)`;
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>
